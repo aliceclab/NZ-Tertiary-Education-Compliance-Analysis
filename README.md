@@ -76,6 +76,7 @@ LEFT JOIN (
 ON e.Error_Code = d.Error_Code
 ORDER BY e.Error_Code;
 ```
+
 ## Business Analysis SQL
 
 To move from compliance checking to stakeholder-facing insight generation, I also used SQL to summarise retention risk across faculties and student groups.
