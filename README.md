@@ -127,15 +127,15 @@ International students had the highest low-retention rate by citizenship group
 
 This page compares:
 
-average teaching score
+- average teaching score
 
-average support score
+- average support score
 
-average belonging score
+- average belonging score
 
-average retention likelihood
+- average retention likelihood
 
-low-retention percentage
+- low-retention percentage
 
 at the faculty level.
 
@@ -147,11 +147,11 @@ This page focuses on ethnicity and citizenship-based experience gaps.
 
 It combines:
 
-low-retention % by ethnicity
+- low-retention % by ethnicity
 
-low-retention % by citizenship status
+- low-retention % by citizenship status
 
-scorecard-style comparison of support, belonging, and retention
+- scorecard-style comparison of support, belonging, and retention
 
 This helps explain not just who is at higher risk, but also which student experience indicators may be linked to that risk.
 
