@@ -75,6 +75,7 @@ LEFT JOIN (
 ) d
 ON e.Error_Code = d.Error_Code
 ORDER BY e.Error_Code;
+```
 
 ## Business Analysis SQL
 
