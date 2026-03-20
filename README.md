@@ -75,3 +75,129 @@ LEFT JOIN (
 ) d
 ON e.Error_Code = d.Error_Code
 ORDER BY e.Error_Code;
+
+##Business Analysis SQL
+
+To move from compliance checking to stakeholder-facing insight generation, I also used SQL to summarise retention risk across faculties and student groups.
+
+##Faculty-Level Retention Risk
+
+The query below calculates the proportion of low-retention responses by faculty. This helped identify Foundation Studies as the clearest faculty-level risk group.
+
+SELECT
+    Faculty,
+    COUNT(*) AS total_responses,
+    SUM(CASE WHEN Retention_Likelihood <= 5 THEN 1 ELSE 0 END) AS low_retention_count,
+    ROUND(
+        SUM(CASE WHEN Retention_Likelihood <= 5 THEN 1 ELSE 0 END) * 100.0 / COUNT(*),
+        2
+    ) AS low_retention_pct
+FROM student_survey
+GROUP BY Faculty
+ORDER BY low_retention_pct DESC;
+
+##Citizenship-Based Retention Risk
+
+I also compared retention risk by citizenship group and found that international students had the highest low-retention percentage.
+
+##Power BI Dashboard
+
+The Power BI report was designed as a three-page dashboard focused on retention risk and student experience gaps.
+
+###Page 1 — Retention Risk Overview
+
+This page ranks low-retention percentage across key groups:
+
+faculty
+
+ethnicity
+
+citizenship status
+
+It highlights that:
+
+Foundation Studies had the highest faculty-level retention risk
+
+Māori and Pacific Peoples showed higher low-retention percentages by ethnicity
+
+International students had the highest low-retention rate by citizenship group
+
+###Page 2 — Faculty Deep Dive
+
+This page compares:
+
+average teaching score
+
+average support score
+
+average belonging score
+
+average retention likelihood
+
+low-retention percentage
+
+at the faculty level.
+
+It shows that Foundation Studies stood out as the clearest faculty-level risk group.
+
+###Page 3 — Equity & Student Experience
+
+This page focuses on ethnicity and citizenship-based experience gaps.
+
+It combines:
+
+low-retention % by ethnicity
+
+low-retention % by citizenship status
+
+scorecard-style comparison of support, belonging, and retention
+
+This helps explain not just who is at higher risk, but also which student experience indicators may be linked to that risk.
+
+##Key Insights
+
+Foundation Studies had the highest low-retention percentage at 38.1%.
+
+Māori and Pacific Peoples showed higher retention risk than NZ European students.
+
+International students had the highest low-retention percentage among citizenship groups.
+
+Higher-risk groups also tended to show weaker support and belonging scores.
+
+SQL validation results aligned closely with the injected error log, strengthening confidence in the compliance layer.
+
+##What I Learned
+
+This project helped me strengthen my ability to:
+
+design SQL validation checks against a known error log
+
+combine compliance-focused data work with business-facing insight generation
+
+use Power BI to translate grouped retention patterns into clear dashboard stories
+
+communicate analytical findings in plain English for non-technical stakeholders
+
+##Repository Structure
+
+/data
+  SDR_LEAR.csv
+  SDR_ENRL.csv
+  STUDENT_SURVEY.csv
+  EXPECTED_ERRORS.csv
+
+/sql
+  validation_checks.sql
+  business_analysis.sql
+
+/screenshots
+  validation_expected_vs_detected.png
+  retention_by_faculty_low_retention_pct_sql.png
+  retention_by_citizenship_low_retention_pct_sql.png
+  powerbi_retention_risk_overview.png
+  powerbi_faculty_deep_dive.png
+  powerbi_equity_student_experience.png
+
+/docs
+  SQL_Validation_Interview_Notes_v3.docx
+
