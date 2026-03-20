@@ -96,11 +96,11 @@ FROM student_survey
 GROUP BY Faculty
 ORDER BY low_retention_pct DESC;
 
-##Citizenship-Based Retention Risk
+## Citizenship-Based Retention Risk
 
 I also compared retention risk by citizenship group and found that international students had the highest low-retention percentage.
 
-##Power BI Dashboard
+## Power BI Dashboard
 
 The Power BI report was designed as a three-page dashboard focused on retention risk and student experience gaps.
 
@@ -108,11 +108,11 @@ The Power BI report was designed as a three-page dashboard focused on retention 
 
 This page ranks low-retention percentage across key groups:
 
-faculty
+- faculty
 
-ethnicity
+- ethnicity
 
-citizenship status
+- citizenship status
 
 It highlights that:
 
@@ -122,7 +122,7 @@ Māori and Pacific Peoples showed higher low-retention percentages by ethnicity
 
 International students had the highest low-retention rate by citizenship group
 
-###Page 2 — Faculty Deep Dive
+### Page 2 — Faculty Deep Dive
 
 This page compares:
 
@@ -140,7 +140,7 @@ at the faculty level.
 
 It shows that Foundation Studies stood out as the clearest faculty-level risk group.
 
-###Page 3 — Equity & Student Experience
+### Page 3 — Equity & Student Experience
 
 This page focuses on ethnicity and citizenship-based experience gaps.
 
@@ -154,7 +154,7 @@ scorecard-style comparison of support, belonging, and retention
 
 This helps explain not just who is at higher risk, but also which student experience indicators may be linked to that risk.
 
-##Key Insights
+## Key Insights
 
 Foundation Studies had the highest low-retention percentage at 38.1%.
 
@@ -166,7 +166,7 @@ Higher-risk groups also tended to show weaker support and belonging scores.
 
 SQL validation results aligned closely with the injected error log, strengthening confidence in the compliance layer.
 
-##What I Learned
+## What I Learned
 
 This project helped me strengthen my ability to:
 
@@ -178,7 +178,7 @@ use Power BI to translate grouped retention patterns into clear dashboard storie
 
 communicate analytical findings in plain English for non-technical stakeholders
 
-##Repository Structure
+## Repository Structure
 
 /data
   SDR_LEAR.csv
