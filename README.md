@@ -76,11 +76,11 @@ LEFT JOIN (
 ON e.Error_Code = d.Error_Code
 ORDER BY e.Error_Code;
 
-##Business Analysis SQL
+## Business Analysis SQL
 
 To move from compliance checking to stakeholder-facing insight generation, I also used SQL to summarise retention risk across faculties and student groups.
 
-##Faculty-Level Retention Risk
+## aculty-Level Retention Risk
 
 The query below calculates the proportion of low-retention responses by faculty. This helped identify Foundation Studies as the clearest faculty-level risk group.
 
@@ -104,7 +104,7 @@ I also compared retention risk by citizenship group and found that international
 
 The Power BI report was designed as a three-page dashboard focused on retention risk and student experience gaps.
 
-###Page 1 — Retention Risk Overview
+### Page 1 — Retention Risk Overview
 
 This page ranks low-retention percentage across key groups:
 
