@@ -27,6 +27,10 @@ This project uses four synthetic datasets:
 - `STUDENT_SURVEY.csv` — student experience survey responses, including teaching, support, belonging, administrative experience, and retention likelihood
 - `EXPECTED_ERRORS.csv` — ground-truth injected error log used to validate SQL detection logic
 
+## Dataset Reproducibility Note
+
+The included CSV files are the canonical data source used for all SQL validation and Power BI work. The Python script (v3) uses `SEED=42` and produces statistically equivalent output with the same story, rankings, and error structure. Due to random state sensitivity across Python/numpy versions, re-running the script produces matching results but not byte-identical files — use the included CSVs for dashboard and SQL work.
+
 ## SQL Validation Layer
 
 I built a set of SQL validation checks to test common SDR-style data quality issues, including:
