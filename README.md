@@ -76,15 +76,17 @@ LEFT JOIN (
 ON e.Error_Code = d.Error_Code
 ORDER BY e.Error_Code;
 ```
-
 ## Business Analysis SQL
 
 To move from compliance checking to stakeholder-facing insight generation, I also used SQL to summarise retention risk across faculties and student groups.
 
-## aculty-Level Retention Risk
+### Faculty-Level Retention Risk
 
-The query below calculates the proportion of low-retention responses by faculty. This helped identify Foundation Studies as the clearest faculty-level risk group.
+The query below calculates the proportion of low-retention responses by faculty. This helped identify **Foundation Studies** as the clearest faculty-level risk group.
 
+![Faculty low retention SQL](screenshots/retention_by_faculty_low_retention_pct_sql.png)
+
+```sql
 SELECT
     Faculty,
     COUNT(*) AS total_responses,
@@ -96,10 +98,13 @@ SELECT
 FROM student_survey
 GROUP BY Faculty
 ORDER BY low_retention_pct DESC;
+```
 
-## Citizenship-Based Retention Risk
+### Citizenship-Based Retention Risk
 
-I also compared retention risk by citizenship group and found that international students had the highest low-retention percentage.
+I also compared retention risk by citizenship group and found that **international students** had the highest low-retention percentage.
+
+![Citizenship low retention SQL](screenshots/retention_by_citizenship_low_retention_pct_sql.png)
 
 ## Power BI Dashboard
 
@@ -110,36 +115,32 @@ The Power BI report was designed as a three-page dashboard focused on retention 
 This page ranks low-retention percentage across key groups:
 
 - faculty
-
 - ethnicity
-
 - citizenship status
 
 It highlights that:
 
-Foundation Studies had the highest faculty-level retention risk
+- **Foundation Studies** had the highest faculty-level retention risk
+- **Māori** and **Pacific Peoples** showed higher low-retention percentages by ethnicity
+- **International students** had the highest low-retention rate by citizenship group
 
-Māori and Pacific Peoples showed higher low-retention percentages by ethnicity
-
-International students had the highest low-retention rate by citizenship group
+![Retention Risk Overview](screenshots/powerbi_retention_risk_overview.png)
 
 ### Page 2 — Faculty Deep Dive
 
 This page compares:
 
 - average teaching score
-
 - average support score
-
 - average belonging score
-
 - average retention likelihood
-
 - low-retention percentage
 
 at the faculty level.
 
-It shows that Foundation Studies stood out as the clearest faculty-level risk group.
+It shows that **Foundation Studies** stood out as the clearest faculty-level risk group.
+
+![Faculty Deep Dive](screenshots/powerbi_faculty_deep_dive.png)
 
 ### Page 3 — Equity & Student Experience
 
@@ -148,39 +149,33 @@ This page focuses on ethnicity and citizenship-based experience gaps.
 It combines:
 
 - low-retention % by ethnicity
-
 - low-retention % by citizenship status
-
 - scorecard-style comparison of support, belonging, and retention
 
-This helps explain not just who is at higher risk, but also which student experience indicators may be linked to that risk.
+This helps explain not just **who is at higher risk**, but also **which student experience indicators may be linked to that risk**.
+
+![Equity & Student Experience](screenshots/powerbi_equity_student_experience.png)
 
 ## Key Insights
 
-Foundation Studies had the highest low-retention percentage at 38.1%.
-
-Māori and Pacific Peoples showed higher retention risk than NZ European students.
-
-International students had the highest low-retention percentage among citizenship groups.
-
-Higher-risk groups also tended to show weaker support and belonging scores.
-
-SQL validation results aligned closely with the injected error log, strengthening confidence in the compliance layer.
+- Foundation Studies had the highest low-retention percentage at **38.1%**.
+- Māori and Pacific Peoples showed higher retention risk than NZ European students.
+- International students had the highest low-retention percentage among citizenship groups.
+- Higher-risk groups also tended to show weaker support and belonging scores.
+- SQL validation results aligned closely with the injected error log, strengthening confidence in the compliance layer.
 
 ## What I Learned
 
 This project helped me strengthen my ability to:
 
-design SQL validation checks against a known error log
-
-combine compliance-focused data work with business-facing insight generation
-
-use Power BI to translate grouped retention patterns into clear dashboard stories
-
-communicate analytical findings in plain English for non-technical stakeholders
+- design SQL validation checks against a known error log
+- combine compliance-focused data work with business-facing insight generation
+- use Power BI to translate grouped retention patterns into clear dashboard stories
+- communicate analytical findings in plain English for non-technical stakeholders
 
 ## Repository Structure
 
+```text
 /data
   SDR_LEAR.csv
   SDR_ENRL.csv
@@ -201,4 +196,13 @@ communicate analytical findings in plain English for non-technical stakeholders
 
 /docs
   SQL_Validation_Interview_Notes_v3.docx
+```
+
+## Next Steps
+
+Future iterations could include:
+
+- refining the overlap detection rule for enrolment periods
+- adding a dedicated compliance page in Power BI using `EXPECTED_ERRORS.csv`
+- expanding drill-through capability for faculty and student-group analysis
 
